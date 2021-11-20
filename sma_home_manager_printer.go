@@ -28,8 +28,19 @@ func main() {
 }
 
 func msgHandler(src *net.UDPAddr, n int, b []byte) {
-	// 0-28: SMA/SUSyID/SN/Uptime
 	log.Println("-----------------------------------------------------")
+	// There are some broadcast packets caught by the multicast listener, that the meter is sending to 9522.
+	// See https://github.com/mitchese/shm-et340/issues/2
+	if binary.BigEndian.Uint32(b[20:24]) == 0xffffffff {
+		log.Println("Implausible serial, rejecting")
+		return
+	}
+	if n < 500 {
+		log.Println("Received packet is probably too small. Size: ", n)
+		log.Println("Serial: ", binary.BigEndian.Uint32(b[20:24]))
+		return
+	}
+	// 0-28: SMA/SUSyID/SN/Uptime
 	log.Println("Received datagram from meter")
 	log.Println("Uid: ", binary.BigEndian.Uint32(b[4:8]))
 	log.Println("Serial: ", binary.BigEndian.Uint32(b[20:24]))
