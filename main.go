@@ -31,11 +31,15 @@ func msgHandler(src *net.UDPAddr, n int, b []byte) {
 	log.Println("-----------------------------------------------------")
 	// There are some broadcast packets caught by the multicast listener, that the meter is sending to 9522.
 	// See https://github.com/mitchese/shm-et340/issues/2
+	if 24681 != binary.BigEndian.Uint16(b[16:18]) {
+		log.Println("The protocol ID didn't match 0x6069, it's not a meter update. ProtocolID: ", binary.BigEndian.Uint16(b[16:18]))
+		return
+	}
 	if binary.BigEndian.Uint32(b[20:24]) == 0xffffffff {
 		log.Println("Implausible serial, rejecting")
 		return
 	}
-	if n < 500 {
+	if n < 200 {
 		log.Println("Received packet is probably too small. Size: ", n)
 		log.Println("Serial: ", binary.BigEndian.Uint32(b[20:24]))
 		return
