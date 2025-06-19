@@ -1,10 +1,10 @@
 module sma_home_manager_printer
 
-go 1.16
+go 1.22
+
+toolchain go1.24.2
 
 require (
 	github.com/dmichael/go-multicast v0.0.0-20191021152323-097bfd85720a
-	github.com/godbus/dbus v4.1.0+incompatible
-	github.com/godbus/dbus/v5 v5.0.3
-	github.com/sirupsen/logrus v1.8.0
+	github.com/klauspost/compress v1.18.0
 )
