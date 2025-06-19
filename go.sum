@@ -1,4 +1,2 @@
 github.com/dmichael/go-multicast v0.0.0-20191021152323-097bfd85720a h1:25JtRbQg7x5VKxwA12V1mr3k0cEZHHnlVXoCVLtwpF0=
 github.com/dmichael/go-multicast v0.0.0-20191021152323-097bfd85720a/go.mod h1:03yBDEz1IjyB9sGdRXFFw1B+Rild6pob4yP7IgX5enU=
-github.com/klauspost/compress v1.18.0 h1:c/Cqfb0r+Yi+JtIEq73FWXVkRonBlf0CRNYc8Zttxdo=
-github.com/klauspost/compress v1.18.0/go.mod h1:2Pp+KzxcywXVXMr50+X0Q/Lsb43OQHYWRCY2AiWywWQ=
