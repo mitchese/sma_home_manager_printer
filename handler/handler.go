@@ -57,9 +57,9 @@ func MsgHandler(src *net.UDPAddr, n int, b []byte) {
 	var L1, L2, L3 *phase.SinglePhase
 
 	if isEnergyMeter {
-		L1 = phase.DecodePhaseChunk(b[160:304])
-		L2 = phase.DecodePhaseChunk(b[304:448])
-		L3 = phase.DecodePhaseChunk(b[448:592])
+		L1 = phase.DecodePhaseChunk(b[156:300])
+		L2 = phase.DecodePhaseChunk(b[300:444])
+		L3 = phase.DecodePhaseChunk(b[444:588])
 	} else {
 		L1 = phase.DecodePhaseChunk(b[164:308])
 		L2 = phase.DecodePhaseChunk(b[308:452])
